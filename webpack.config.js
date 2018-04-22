@@ -17,7 +17,7 @@ module.exports = {
     entry: './main.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '_site'),
     },
     resolve: {
         alias: {
