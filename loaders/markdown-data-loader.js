@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const markTwain = require('mark-twain');
 
 function isDirectory(filename) {
     return fs.statSync(filename).isDirectory();
@@ -20,7 +21,7 @@ function getAllMarkdown(mdSource) {
             }
             fileTree[basename] = subFileTree;
         } else if (basename.match(/\.md$/)) {
-            fileTree[`${basename}`] = mdPath;
+            fileTree[`${basename}`] = markTwain(fs.readFileSync(mdPath));
         }
 
         return fileTree;

@@ -5,6 +5,9 @@ const babelOptions = {
     presets: [
         '@babel/preset-env',
     ],
+    plugins: [
+        'transform-vue-jsx',
+    ],
 };
 
 const loadMarkdownPlaceholder = path.join(__dirname, './temp/markdown-data.js');
@@ -28,6 +31,13 @@ module.exports = {
                 }
             },
             {
+                test: /\.vue$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'vue-loader'
+                },
+            },
+            {
                 test(filename) {
                     return filename === loadMarkdownPlaceholder;
                 },
@@ -37,13 +47,8 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        port: 9004,
-        contentBase: path.join(__dirname, 'public'),
-        publicPath: "/",
-        hot: true,
-    },
     plugins: [
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ],
 };
