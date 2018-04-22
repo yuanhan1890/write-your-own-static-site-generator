@@ -19,7 +19,11 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
-
+    resolve: {
+        alias: {
+            '@markdown-data': path.resolve(__dirname, './temp/markdown-data.js'),
+        },
+    },
     module: {
         rules: [
             {

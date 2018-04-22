@@ -1,10 +1,17 @@
 import Vue from 'vue/dist/vue.common.js';
 import VueRouter from 'vue-router';
-import markdownData from './temp/markdown-data';
 
 Vue.use(VueRouter);
 
 const routes = [
+    {
+        path: '/404',
+        component: {
+            render(h) {
+                return <div>404</div>;
+            },
+        },
+    },
     {
         path: '*',
         component: require('./src/pages/uni.vue').default,
