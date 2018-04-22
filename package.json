@@ -1,0 +1,23 @@
+{
+  "name": "write-your-own-static-site-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuanhan1890/write-your-own-static-site-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuanhan1890/write-your-own-static-site-generator/issues"
+  },
+  "homepage": "https://github.com/yuanhan1890/write-your-own-static-site-generator#readme",
+  "devDependencies": {
+    "lerna": "^2.10.2"
+  }
+}
