@@ -6,7 +6,15 @@ function isDirectory(filename) {
     return fs.statSync(filename).isDirectory();
 }
 
-function getAllMarkdown(mdSource, dontTransform = false) {
+function transformToMarkdownData(filename) {
+    const ast = markTwain(fs.readFileSync(filename));
+    return {
+        filename,
+        ...ast
+    };
+}
+
+function getAllMarkdown(mdSource, transformer = i => i) {
     if (!isDirectory(mdSource)) {
         throw new Error('should be a directory path');
     }
@@ -15,17 +23,13 @@ function getAllMarkdown(mdSource, dontTransform = false) {
         const mdPath = path.resolve(mdSource, filename);
         const basename = path.basename(mdPath);
         if (isDirectory(mdPath)) {
-            const subFileTree = getAllMarkdown(mdPath, dontTransform);
+            const subFileTree = getAllMarkdown(mdPath, transformer);
             if (Object.keys(subFileTree) === 0) {
                 return fileTree;
             }
             fileTree[basename] = subFileTree;
         } else if (basename.match(/\.md$/)) {
-            if (dontTransform) {
-                fileTree[`${basename}`] = mdPath;
-            } else {
-                fileTree[`${basename}`] = markTwain(fs.readFileSync(mdPath));
-            }
+            fileTree[`${basename}`] = transformer(mdPath);
         }
 
         return fileTree;
@@ -48,5 +52,6 @@ function traverseFileTree(fileTree, callback, root = '') {
 module.exports = {
     isDirectory,
     getAllMarkdown,
+    transformToMarkdownData,
     traverseFileTree,
 }

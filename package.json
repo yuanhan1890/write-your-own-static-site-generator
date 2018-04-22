@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf ./_site && node ./bin/build.js",
+    "build": "rm -rf ./_site && node ./bin/build.js && http-server -c-1",
     "start": "node ./bin/start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -34,6 +34,7 @@
     "babel-loader": "^8.0.0-beta.2",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "http-server": "^0.11.1",
     "mkdirp": "^0.5.1",
     "nodemon": "^1.17.3",
     "vue": "^2.5.16",

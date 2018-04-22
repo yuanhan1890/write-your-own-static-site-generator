@@ -20,7 +20,7 @@ webpack(webpackConfig, (err, stats) => {
         return;
     }
 
-    const fileTree = getAllMarkdown(path.join(process.cwd(), './posts'), true);
+    const fileTree = getAllMarkdown(path.join(process.cwd(), './posts'));
 
     traverseFileTree(fileTree, (key, value, url) => {
         const output = path.join(process.cwd(), './_site', url);

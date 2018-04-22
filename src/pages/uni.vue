@@ -1,15 +1,23 @@
 <template>
-    <markdown-renderer :markdown-data="pageData" />
+    <div>
+        <auto-menu :menu="markdownData" root=""></auto-menu>
+        <markdown-renderer :markdown-data="pageData"></markdown-renderer>
+    </div>
 </template>
 <script>
 import markdownData from '@markdown-data';
 import MarkdownRenderer from '../components/markdown-renderer.js';
+import AutoMenu from '../components/auto-menu.js';
 
 export default {
     components: {
         MarkdownRenderer,
+        AutoMenu,
     },
     computed: {
+        markdownData() {
+            return markdownData;
+        },
         pageData() {
             try {
                 let currentPath = this.$route.path;
