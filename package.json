@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./bin/start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "ignore": ["posts/*", "src/*", "./main.js"],
+    "delay": "2500"
   },
   "repository": {
     "type": "git",
@@ -18,6 +23,13 @@
   },
   "homepage": "https://github.com/yuanhan1890/write-your-own-static-site-generator#readme",
   "devDependencies": {
-    "lerna": "^2.10.2"
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "babel-loader": "^8.0.0-beta.2",
+    "nodemon": "^1.17.3",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "webpack": "^4.6.0",
+    "webpack-dev-server": "^3.1.3"
   }
 }
